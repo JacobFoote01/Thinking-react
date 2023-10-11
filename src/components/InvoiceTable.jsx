@@ -33,51 +33,6 @@ const InvoiceTable = ({initialInvoiceData}) => {
                 <tbody>
 
                     {rows}
-                    
-                    {/* <TableRow initialIsEditing={false} 
-                        initialInvoiceData={initialInvoiceData}
-                    />
-                    <TableRow initialIsEditing={false}
-                        initialInvoiceData={initialInvoiceData}
-                    />
-                    <TableRow initialIsEditing={false}
-                        initialInvoiceData={initialInvoiceData}
-                    /> */}
-
-                    {/* <tr>
-                        <ModeButtons 
-                            isEditing={false} 
-                        />
-                        <DescriptionCell 
-                            isEditing={false} 
-                            value="Web Development"
-                        />
-                        <RateCell 
-                            isEditing={false} 
-                            value={21}
-                        />
-                        <HoursCell 
-                            isEditing={false} 
-                            value={40}
-                        />
-                    </tr>
-                    <tr>
-                        <ModeButtons 
-                            isEditing={true} 
-                        />
-                        <DescriptionCell 
-                            isEditing={true} 
-                            value="Zookeeping"
-                        />
-                        <RateCell 
-                            isEditing={true} 
-                            value={99}
-                        />
-                        <HoursCell 
-                            isEditing={true} 
-                            value={25}
-                        />
-                   </tr> */}
 
                 </tbody>
             
