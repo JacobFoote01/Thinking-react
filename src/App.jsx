@@ -10,11 +10,11 @@ const TEST_DATA = [
   { id: 3, description: 'Website development', rate: 100, hours: 5 },
 ];
 
+
 function App() {
   return (
     <>
-      <ModeButtons isEditing={false} />
-      <DescriptionCell isEditing={false} />
+      <InvoiceTable initialInvoiceData={TEST_DATA}/>
     </>
   );
 }

@@ -1,7 +1,12 @@
+import formatCurrency from '../utils/formatCurrency.js'
 
-const RateCell = () => {
-  return (
-    <div>RateCell</div>
+const RateCell = ({isEditing, value}) => {
+  return isEditing ? (
+    <td>
+      <input type="text" value={formatCurrency(value)} />
+    </td>
+    ) : (
+      <td>{formatCurrency(value)}</td>
   )
 }
 

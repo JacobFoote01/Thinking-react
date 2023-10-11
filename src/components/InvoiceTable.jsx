@@ -1,9 +1,91 @@
 import './InvoiceTable.css';
+import ModeButtons from './ModeButtons';
+import DescriptionCell from './DescriptionCell';
+import RateCell from './RateCell';
+import HoursCell from './HoursCell'
+import TableHeader from './TableHeader';
+import AddButton from './AddButton';
+import TableRow from './TableRow';
 
-const InvoiceTable = () => {
+const InvoiceTable = ({initialInvoiceData}) => {
+
+    const rows = initialInvoiceData.map((invoiceItem) => {
+
+        const{id, description, rate, hours} = invoiceItem
+
+        return(
+            <TableRow 
+                key={id}
+                initialInvoiceData={{ description, rate, hours }}
+                initialIsEditing={false}
+            />
+        )
+    })
 
     return (
-        <div>Invoice Table</div>
+        <div>
+            <table>
+
+                <thead>
+                    <TableHeader />
+                </thead>
+
+                <tbody>
+
+                    {rows}
+                    
+                    {/* <TableRow initialIsEditing={false} 
+                        initialInvoiceData={initialInvoiceData}
+                    />
+                    <TableRow initialIsEditing={false}
+                        initialInvoiceData={initialInvoiceData}
+                    />
+                    <TableRow initialIsEditing={false}
+                        initialInvoiceData={initialInvoiceData}
+                    /> */}
+
+                    {/* <tr>
+                        <ModeButtons 
+                            isEditing={false} 
+                        />
+                        <DescriptionCell 
+                            isEditing={false} 
+                            value="Web Development"
+                        />
+                        <RateCell 
+                            isEditing={false} 
+                            value={21}
+                        />
+                        <HoursCell 
+                            isEditing={false} 
+                            value={40}
+                        />
+                    </tr>
+                    <tr>
+                        <ModeButtons 
+                            isEditing={true} 
+                        />
+                        <DescriptionCell 
+                            isEditing={true} 
+                            value="Zookeeping"
+                        />
+                        <RateCell 
+                            isEditing={true} 
+                            value={99}
+                        />
+                        <HoursCell 
+                            isEditing={true} 
+                            value={25}
+                        />
+                   </tr> */}
+
+                </tbody>
+            
+                <tfoot>
+                    <AddButton />
+                </tfoot>
+            </table>
+        </div>
     )
 }
 

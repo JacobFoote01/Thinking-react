@@ -1,12 +1,12 @@
 
-const DescriptionCell = ({ isEditing }) => {
+const DescriptionCell = ({ isEditing, value }) => {
 
     return isEditing ? (
         <td>
-            <input type="text" value="description" />
+            <input type="text" value={value} />
         </td>
   ) : (
-        <td>Description</td>
+        <td>{value}</td>
   )
 }
 

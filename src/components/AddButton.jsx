@@ -1,7 +1,12 @@
 
 const AddButton = () => {
   return (
-    <div>AddButton</div>
+    <tr>
+      <td></td>
+      <td colSpan={4}>
+        <button>Add Row</button>
+      </td>
+    </tr>
   )
 }
 
