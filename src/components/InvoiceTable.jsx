@@ -6,21 +6,61 @@ import HoursCell from './HoursCell'
 import TableHeader from './TableHeader';
 import AddButton from './AddButton';
 import TableRow from './TableRow';
+import { useState } from 'react';
+
+let globalId = 4
 
 const InvoiceTable = ({initialInvoiceData}) => {
 
-    const rows = initialInvoiceData.map((invoiceItem) => {
+    const [currentData, setCurrentData] = useState(initialInvoiceData)
 
-        const{id, description, rate, hours} = invoiceItem
+    const rows = currentData.map((invoiceItem) => {
 
-        return(
+        const{id, description, rate, hours, isEditing} = invoiceItem
+
+        return (
             <TableRow 
                 key={id}
                 initialInvoiceData={{ description, rate, hours }}
-                initialIsEditing={false}
+                initialIsEditing={isEditing}
+                deleteFunc={() => deleteRow(id)}
             />
-        )
+        ) 
     })
+
+    //addRow function to pass <addButton/> to give it the ability to add a new object (row) to our currentData array
+    const addRow = () => {
+        //get a copy of the current data
+        const newInvoiceData = [...currentData]
+
+        //create a new "blank" object for the new row (modeled after each element in TEST_DATA)
+        const newRow = {
+            id: globalId,
+            description: 'Description',
+            rate: '',
+            hours: '',
+            isEditing: true
+        }
+        // Add nowRow object to eh end of our copy of currentData
+        newInvoiceData.push(newRow)
+
+        // call setCurrentData to change state of currentData
+        setCurrentData(newInvoiceData)
+
+        // all above can be done with this instead 
+        // setCurrentData([...currentData, newRow])
+
+        globalId++
+    }
+    
+    // delete function to pass to <tableRow/> components
+    const deleteRow = (itemId) => {
+        
+        //using the given id^ find the corresponding element in currentData and remove it
+        const filteredList = currentData.filter((invoiceItem) => invoiceItem.id != itemId)
+        
+        setCurrentData(filteredList)    
+    }
 
     return (
         <div>
@@ -37,7 +77,9 @@ const InvoiceTable = ({initialInvoiceData}) => {
                 </tbody>
             
                 <tfoot>
-                    <AddButton />
+                    <AddButton 
+                        addClick={addRow} 
+                    />
                 </tfoot>
             </table>
         </div>

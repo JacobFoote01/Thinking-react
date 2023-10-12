@@ -12,11 +12,11 @@ const TEST_DATA = [
 
 
 function App() {
-  return (
+  return(
     <>
       <InvoiceTable initialInvoiceData={TEST_DATA}/>
     </>
-  );
+  )
 }
 
 export default App;
